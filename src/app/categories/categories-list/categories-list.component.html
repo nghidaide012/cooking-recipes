@@ -1,0 +1,16 @@
+<h1 class="text-center text-xl">Categories</h1>
+<div  class="mx-auto w-8/12 flex flex-col items-center p-5">
+  <div *ngFor="let category of categoriesList">
+    <div class=" w-full flex flex-row items-baseline gap-6" *ngIf="!editView">
+    <p class="w-40">{{category.name}}</p>
+    <button mat-raised-button (click)="toggleEdit(); getCategoryId(category)">edit</button>
+    <button mat-raised-button color="warn" (click)="deleteCategory(category)">delete</button>
+    </div>
+  </div>
+  <app-category-edit *ngIf="editView" (updateCategoryEvent)="updateCategory($event)" (toggleEditViewEvent)="toggleEditView()" [category]="categoryEdit"></app-category-edit>
+  <app-create-categories *ngIf="addView && !editView"  (toggleAddViewEvent)="toggleAddView()" (saveCategoryEvent)="saveCategory($event)"></app-create-categories>
+<div *ngIf="errorMessage">
+    <p class="text-red-700">{{ errorMessage }}</p>
+  </div>
+<button mat-raised-button class="mt-8" *ngIf="!editView" (click)="toggleButton()">Add Category</button>
+</div>

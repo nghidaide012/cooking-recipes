@@ -1,0 +1,17 @@
+<div class="w-10/12 text-center px-auto mx-auto ">
+    <h1>Our Recipes</h1>
+
+    <ul class="my-10 flex flex-row justify-center gap-20">
+        <li class="py-2 px-3 rounded-full bg-gray-100 hover:opacity-100 opacity-80 cursor-pointer shadow-sm border border-gray-200" (click)="filterRecipe(0)">All</li>
+        <li *ngFor="let item of categoryList" (click)="filterRecipe(item.id)" class="py-2 px-3 rounded-full bg-gray-100 cursor-pointer shadow-sm border border-gray-200 hover:opacity-100 opacity-80" >{{item.name}}</li>
+    </ul>
+
+<div class="flex flex-row mx-auto justify-start flex-wrap gap-4 text-left">
+    <div class="w-80 h-80 flex flex-col items-center cursor-pointer border border-gray-100 shadow-sm" *ngFor="let recipe of recipeList" routerLink="details/{{recipe.id}}">
+        <img src="{{recipe.image}}" style="width:350px; height:200px" class="object-cover">
+        <h3 class="text-gray-400 mt-1 my-0 px-3 w-full">{{getCategoryName(recipe.categoryId)}}</h3>
+        <h2 class="w-full h-2/5 break-words px-3">{{recipe.name}}</h2>
+    </div>
+</div>
+</div>
+

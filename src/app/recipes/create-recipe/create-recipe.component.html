@@ -1,0 +1,36 @@
+<div class="flex flex-col items-center w-screen mt-10">
+<h1>New Recipe</h1>
+<form class="w-8/12 flex flex-col items-center mt-8" [formGroup]="recipeForm" (ngSubmit)="nextForm()" *ngIf="!nextPage">
+    <mat-form-field class="w-4/12" color="warn">
+        <mat-label>Recipe name</mat-label>
+        <input matInput type="text" name="recipeNameTxt" formControlName="recipeName" placeholder="Name">
+    </mat-form-field>
+    <mat-form-field class="w-4/12" color="warn">
+        <mat-label>Category</mat-label>
+        <mat-select formControlName="category">
+          <mat-option *ngFor="let category of categoriesList" [value]="category.id">
+            {{category.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field> 
+      <mat-form-field class="w-4/12" color="warn">
+        <mat-label>Describe</mat-label>
+        <textarea matInput formControlName="describe" placeholder="Talk about the recipe..."></textarea>
+      </mat-form-field>
+      <mat-form-field class="w-4/12" color="warn">
+        <mat-label>Image</mat-label>
+        <input matInput type="text"  formControlName="image" placeholder="Image url (online source)">
+      </mat-form-field>
+      <mat-form-field class="w-4/12" color="warn">
+        <mat-label>Amount of Ingredients</mat-label>
+        <input matInput type="number"  formControlName="ingredientNum" placeholder="How many items needed to this recipe">
+      </mat-form-field>
+      <mat-form-field class="w-4/12" color="warn">
+        <mat-label>Amount of steps</mat-label>
+        <input matInput type="number"  formControlName="stepNum" placeholder="How many steps needed to make this recipe">
+      </mat-form-field>
+      <p class="text-red-700">{{ errorMessage }}</p>
+    <button mat-raised-button [disabled]="!recipeForm.valid" color="accent">Next</button>
+</form>
+<app-next-save *ngIf="nextPage" [recipeForm]="recipeForm" (goBackEvent)="goBack()"></app-next-save>
+</div>

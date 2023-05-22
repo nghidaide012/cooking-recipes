@@ -1,0 +1,10 @@
+
+  <form class="w-96 flex flex-col items-baseline gap-2 p-3 mt-10"  [formGroup]="CategoryEditForm" (ngSubmit)="updateCategory()">
+      <mat-form-field class="w-full">
+      <input matInput type="text" formControlName="categoryName" name="categoryNameTxt" placeholder="Name" required />
+  </mat-form-field>
+  <div class="flex flex-row gap-7">
+  <button mat-raised-button [disabled]="!CategoryEditForm.valid">Save Category</button>
+  <button mat-raised-button color="warn" type="button" (click)="toggleEdit()">Cancel</button>
+</div>
+  </form>

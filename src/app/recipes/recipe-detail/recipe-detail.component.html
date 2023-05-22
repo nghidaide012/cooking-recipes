@@ -1,0 +1,25 @@
+<div class="w-8/12 flex flex-col mx-auto pb-10 items-center text-justify" *ngIf="selectedRecipe">
+    <div class="w-full flex flex-col items-start">
+    <h1 class="py-2">{{selectedRecipe.name}}</h1>
+    <img src="{{selectedRecipe!.image}}" class="w-full h-[500px] object-cover  rounded">
+    <h3 class="py-3 text-gray-600">{{selectedRecipe.description}}</h3>
+    </div>
+    <div class="w-full flex flex-row justify-center gap-4 mt-5">
+        <div class="w-5/12 mr-3">
+            <h2>Ingredients</h2>
+            <ul *ngFor="let item of selectedRecipe.ingredients">
+                <li><h4>{{item}}</h4></li>
+            </ul>
+        </div>
+        <div class="w-7/12 border-gray-300 border-l pl-6">
+            <h2>Methods</h2>
+            <ul *ngFor="let item of selectedRecipe.methods; let i = index">
+                <li><h3>Step {{i+1}}</h3><h4 class="mx-3">{{item}}</h4></li>
+            </ul>
+        </div>
+    </div>
+    <div class="w-full mt-7">
+    <button mat-raised-button color="warn" (click)="deleteRecipe()">Remove Recipe</button>
+    </div>
+
+</div>
